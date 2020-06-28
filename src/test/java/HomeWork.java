@@ -1,4 +1,8 @@
+
 import org.junit.jupiter.api.Test;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
 
 public class HomeWork {
     @Test
@@ -18,12 +22,33 @@ public class HomeWork {
 
     }
 
-    public static void main (String [] args){
-        String str = "Percent rate fot the period is 1.3, but total loan will be 91000.0EUR";
+    @Test
 
-        System.out.println("Length of the string is " +str.length());
+    public static void main (String []args ){
+        String str = "Percent rate for period is 1.3, but total loan will be 91000.0 EUR";
+        System.out.println("Length of text: " + str.length());
+
+        System.out.println("Lenght of text without spaces: " + str.replace( " ", "").length());
 
     }
+
+    @Test
+
+    public void distanceBetweenToDots(){
+        double x1 = 6;
+        double y1 = 4;
+
+        double x2 = 24;
+        double y2 = 14;
+
+        double AC = x2-x1;
+        double BC = y2-y1;
+        double AB = sqrt(pow(AC,2) + pow(BC,2));
+
+        System.out.println("Distance between points A and B is " + AB + ".");
+
+    }
+
 
 }
 
