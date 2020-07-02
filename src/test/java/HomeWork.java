@@ -25,10 +25,13 @@ public class HomeWork {
     @Test
 
     public static void main (String []args ){
-        String str = "Percent rate for period is 1.3, but total loan will be 91000.0 EUR";
-        System.out.println("Length of text: " + str.length());
+        String text = "Percent rate for period is 1.3, but total loan will be 91000.0 EUR";
+        System.out.println("Length of text: " + text.length());
 
-        System.out.println("Lenght of text without spaces: " + str.replace( " ", "").length());
+        System.out.println("Lenght of text without spaces: " + text.replace( " ", "").length());
+
+        String[] words = text.split(" ");
+        System.out.println(words.length);
 
     }
 
