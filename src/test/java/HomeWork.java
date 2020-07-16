@@ -1,5 +1,9 @@
 
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
@@ -49,6 +53,28 @@ public class HomeWork {
         double AB = sqrt(pow(AC,2) + pow(BC,2));
 
         System.out.println("Distance between points A and B is " + AB + ".");
+
+    }
+
+    @Test
+
+    public void homeWorkDelfi(){
+        System.setProperty("webdriver.chrome.driver", "c://chromedriver.exe");
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("http://delfi.lv");
+        driver.findElement(By.xpath(".//h1[contains(@class, 'headline__title')]")).getText();
+
+        String text = driver.findElement(By.xpath(".//h1[contains(@class, 'headline__title')]")).getText();
+        System.out.println(text);
+
+        driver.findElement(By.xpath(".//a [contains(@class, 'comment-count')]")).getText();
+
+        String count  = driver.findElement(By.xpath(".//a [contains(@class, 'comment-count')]")).getText();
+        System.out.println(count);
+
+
 
     }
 
