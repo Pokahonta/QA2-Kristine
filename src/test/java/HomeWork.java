@@ -1,16 +1,24 @@
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
 
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 
 public class HomeWork {
-    @Test
+    private WebDriver driver;
+    private final By TITLE = By.xpath(".//h1 [contains(@class, 'headline__title')]");
 
+
+
+    @Test
     public void firstHomeWork(){
         double startingLoan = 70000.00 ;
 
@@ -27,7 +35,6 @@ public class HomeWork {
     }
 
     @Test
-
     public static void main (String []args ){
         String text = "Percent rate for period is 1.3, but total loan will be 91000.0 EUR";
         System.out.println("Length of text: " + text.length());
@@ -40,7 +47,6 @@ public class HomeWork {
     }
 
     @Test
-
     public void distanceBetweenToDots(){
         double x1 = 6;
         double y1 = 4;
@@ -56,28 +62,40 @@ public class HomeWork {
 
     }
 
+
     @Test
+    public void delfiHomeTest() {
+        final String TITLE_TO_FIND = "SPKC: pašvaldības var noteikt stingrākus epidemioloģiskās drošības " +
+                "pasākumus pēc savas iniciatīvas";
 
-    public void homeWorkDelfi(){
         System.setProperty("webdriver.chrome.driver", "c://chromedriver.exe");
-
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://delfi.lv");
-        driver.findElement(By.xpath(".//h1[contains(@class, 'headline__title')]")).getText();
 
-        String text = driver.findElement(By.xpath(".//h1[contains(@class, 'headline__title')]")).getText();
-        System.out.println(text);
+        List<WebElement> title = driver.findElements(By.xpath(".//h1[contains(@class, 'headline__title')]"));
+
+        List<WebElement> comments = driver.findElements(By.xpath(".//a [contains(@class, 'comment-count')]"));
+            for (int i = 0; i < title.size(); i++) {
+            System.out.println( (i + 1) + ": " + title.get(i).getText() + comments.get(i).getText());
+            }
+
+        driver.findElement(By.xpath(".//h1[contains(@class, 'headline__title')]")).getText();
+            String firstTitle =  driver.findElement(By.xpath(".//h1[contains(@class, 'headline__title')]")).getText();
 
         driver.findElement(By.xpath(".//a [contains(@class, 'comment-count')]")).getText();
-
         String count  = driver.findElement(By.xpath(".//a [contains(@class, 'comment-count')]")).getText();
-        System.out.println(count);
+
+        System.out.println(firstTitle + count);
 
 
+        }
 
     }
 
 
-}
+  //  public void homeWorkDelfi(){
+      //  final By ARTICLE_PAGE_TITLE = By.xpath(".//h1 [contains (@class, 'd-inline')]");
+       // final String FIRST_TITLE = "Mācības organizēs klātienē, nosakot virkni piesardzības pasākumu";
+
 
