@@ -1,4 +1,5 @@
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -14,7 +15,9 @@ import static java.lang.Math.sqrt;
 
 public class HomeWork {
     private WebDriver driver;
-    private final By TITLE = By.xpath(".//h1 [contains(@class, 'headline__title')]");
+    private final By ARTICLE = By.tagName("article");
+    private final By FIRST_TITLE = By.xpath(".//h1 [contains(@class, 'headline__title')]");
+    private final By ARTICLE_PAGE_TITLE = By.xpath(".//h1[contains(@class, 'd-inline')]");
 
 
 
@@ -65,8 +68,6 @@ public class HomeWork {
 
     @Test
     public void delfiHomeTest() {
-        final String TITLE_TO_FIND = "SPKC: pašvaldības var noteikt stingrākus epidemioloģiskās drošības " +
-                "pasākumus pēc savas iniciatīvas";
 
         System.setProperty("webdriver.chrome.driver", "c://chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -74,7 +75,6 @@ public class HomeWork {
         driver.get("http://delfi.lv");
 
         List<WebElement> title = driver.findElements(By.xpath(".//h1[contains(@class, 'headline__title')]"));
-
         List<WebElement> comments = driver.findElements(By.xpath(".//a [contains(@class, 'comment-count')]"));
             for (int i = 0; i < title.size(); i++) {
             System.out.println( (i + 1) + ": " + title.get(i).getText() + comments.get(i).getText());
@@ -84,7 +84,7 @@ public class HomeWork {
             String firstTitle =  driver.findElement(By.xpath(".//h1[contains(@class, 'headline__title')]")).getText();
 
         driver.findElement(By.xpath(".//a [contains(@class, 'comment-count')]")).getText();
-        String count  = driver.findElement(By.xpath(".//a [contains(@class, 'comment-count')]")).getText();
+            String count  = driver.findElement(By.xpath(".//a [contains(@class, 'comment-count')]")).getText();
 
         System.out.println(firstTitle + count);
 
@@ -92,10 +92,5 @@ public class HomeWork {
         }
 
     }
-
-
-  //  public void homeWorkDelfi(){
-      //  final By ARTICLE_PAGE_TITLE = By.xpath(".//h1 [contains (@class, 'd-inline')]");
-       // final String FIRST_TITLE = "Mācības organizēs klātienē, nosakot virkni piesardzības pasākumu";
 
 
