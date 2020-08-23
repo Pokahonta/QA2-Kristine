@@ -1,17 +1,14 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WrapsElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import javax.print.DocFlavor;
 import java.util.List;
 
 public class HomeworfDelfi {
@@ -21,7 +18,7 @@ public class HomeworfDelfi {
     private final By TITLE_HP  = By.xpath(".//h1[contains(@class, 'headline__title')]");
     private final By COMMENT_COUNTS_HP = By.xpath(".//a[contains(@class, 'comment-count')]");
     //---Article  Page---//
-    private final By TITLE_AP = By.xpath(".//h1[contains(@class, 'd-inline')]");
+    private final By TITLE_AP = By.xpath(".//div[contains(@class, 'article-title')]");
     private final By COMMENTS_COUNTS_AP = By.xpath(".//a[contains(@class, 'd-print')]");
     //----Comments Page---//
     private final By COMMENTS_CP = By.xpath(".//span[@class = 'type-cnt']");
@@ -35,6 +32,7 @@ public class HomeworfDelfi {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://delfi.lv");
+
 
     //----------------------Home Page----------------------//
                   //find articles on Home Page
@@ -61,12 +59,12 @@ public class HomeworfDelfi {
         LOGGER.info("Click on it");
         article.findElement(TITLE_HP).click();
 
-       WebDriverWait wait = new WebDriverWait(driver, 10);
+       WebDriverWait wait = new WebDriverWait(driver, 20);
        wait.until(ExpectedConditions.visibilityOfElementLocated(TITLE_AP));
 
     //--------------------ARTICLE PAGE---------------------//
                      //find title on Article Page
-        LOGGER.info("Get title on Atricle Page");
+        LOGGER.info("Get title on Article Page");
         String articlesPageTitle = driver.findElement(TITLE_AP).getText();
 
                      //find comments count on Article Page
