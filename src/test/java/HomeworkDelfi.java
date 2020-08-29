@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class HomeworfDelfi {
+public class HomeworkDelfi {
     private WebDriver driver;
     //---Home Page---//
     private final By ARTICLE_HP = By.tagName("article");
@@ -21,6 +21,7 @@ public class HomeworfDelfi {
     private final By TITLE_AP = By.xpath(".//div[contains(@class, 'article-title')]");
     private final By COMMENTS_COUNTS_AP = By.xpath(".//a[contains(@class, 'd-print')]");
     //----Comments Page---//
+    private final By TITLE_CP = By.xpath(".//h1[contains(@class, 'article-title')]");
     private final By COMMENTS_CP = By.xpath(".//span[@class = 'type-cnt']");
 
     private final Logger LOGGER = LogManager.getLogger(this.getClass());
@@ -72,19 +73,19 @@ public class HomeworfDelfi {
         int articlesPageCommentCount = parseCommentCount(driver.findElement(COMMENTS_COUNTS_AP).getText());
 
                      //check
-        Assertions.assertTrue(homePageTitle.startsWith(articlesPageTitle), "Wrong title!");
+        Assertions.assertTrue(articlesPageTitle.startsWith(homePageTitle), "Wrong title!");
         Assertions.assertEquals(homePageCommentsCount, articlesPageCommentCount, "Wrong comment count!");
 
                       //click(open) on it
         LOGGER.info("Click on it");
         driver.findElement(COMMENTS_COUNTS_AP).click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(TITLE_AP));
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(TITLE_AP));
 
     //------------------COMMENTS PAGE----------------------//
                       //find title on Comments Page
         LOGGER.info("Get title on Comments Page");
-        String commentsPageTitle = driver.findElement(TITLE_AP).getText();
+        String commentsPageTitle = driver.findElement(TITLE_CP).getText();
 
                       //find comments on Comments Page
         LOGGER.info("Get comments in Comments Page");
