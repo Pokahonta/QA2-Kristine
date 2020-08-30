@@ -15,10 +15,11 @@ public class HomeworkDelfi {
     private WebDriver driver;
     //---Home Page---//
     private final By ARTICLE_HP = By.tagName("article");
-    private final By TITLE_HP  = By.xpath(".//h1[contains(@class, 'headline__title')]");
+    //    private final By TITLE_HP  = By.xpath(".//h1[contains(@class, 'headline__title')]");
+    private final By TITLE_HP = By.xpath("//a[@class='text-mine-shaft']");
     private final By COMMENT_COUNTS_HP = By.xpath(".//a[contains(@class, 'comment-count')]");
     //---Article  Page---//
-    private final By TITLE_AP = By.xpath(".//div[contains(@class, 'article-title')]");
+    private final By TITLE_AP = By.xpath(".//h1[contains(@class, 'd-inline')]");
     private final By COMMENTS_COUNTS_AP = By.xpath(".//a[contains(@class, 'd-print')]");
     //----Comments Page---//
     private final By TITLE_CP = By.xpath(".//h1[contains(@class, 'article-title')]");
@@ -35,73 +36,87 @@ public class HomeworkDelfi {
         driver.get("http://delfi.lv");
 
 
-    //----------------------Home Page----------------------//
-                  //find articles on Home Page
+        //----------------------Home Page----------------------//
+        //find articles on Home Page
         LOGGER.info("Get articles on Home Page");
         List<WebElement> articles = driver.findElements(ARTICLE_HP);
 
-                   //find 3rd article on Home Page
+        //find 3rd article on Home Page
         LOGGER.info("Get 3rd article on Home Page");
         WebElement article = articles.get(2);
 
-                   //find article title on Home Page
+        //find article title on Home Page
         LOGGER.info("Get article title on Home Page");
         String homePageTitle = article.findElement(TITLE_HP).getText();
 
-                    //find article comments count on Home Page
+        //find article comments count on Home Page
         LOGGER.info("Get article comments count on Home Page");
         int homePageCommentsCount = 0;
-        if (!article.findElements(COMMENT_COUNTS_HP).isEmpty()){
+        if (!article.findElements(COMMENT_COUNTS_HP).isEmpty()) {
             homePageCommentsCount = parseCommentCount(article.findElement(COMMENT_COUNTS_HP).getText());
         }
-        //System.out.println(homePageTitle + " " + homePageCommentsCount);
+        System.out.println(homePageTitle + " " + homePageCommentsCount);
 
-                    //click on it
+        //click on it
         LOGGER.info("Click on it");
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("frontTarget")));
+
+        if (driver.findElements(By.id("frontTarget")).size() != 0) {
+            driver.switchTo().frame("frontTarget");
+
+            if (driver.findElements(By.id("Close")).size() != 0) {
+                driver.findElement(By.id("Close")).click();
+            }
+
+            driver.switchTo().defaultContent();
+        }
+
         article.findElement(TITLE_HP).click();
 
-       WebDriverWait wait = new WebDriverWait(driver, 20);
-       wait.until(ExpectedConditions.visibilityOfElementLocated(TITLE_AP));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(TITLE_AP));
 
-    //--------------------ARTICLE PAGE---------------------//
-                     //find title on Article Page
+        //--------------------ARTICLE PAGE---------------------//
+        //find title on Article Page
         LOGGER.info("Get title on Article Page");
         String articlesPageTitle = driver.findElement(TITLE_AP).getText();
 
-                     //find comments count on Article Page
+        //find comments count on Article Page
         LOGGER.info("Get comments count on Article Page");
         int articlesPageCommentCount = parseCommentCount(driver.findElement(COMMENTS_COUNTS_AP).getText());
 
-                     //check
+        //check
         Assertions.assertTrue(articlesPageTitle.startsWith(homePageTitle), "Wrong title!");
         Assertions.assertEquals(homePageCommentsCount, articlesPageCommentCount, "Wrong comment count!");
 
-                      //click(open) on it
+        //click(open) on it
         LOGGER.info("Click on it");
         driver.findElement(COMMENTS_COUNTS_AP).click();
 
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(TITLE_AP));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(TITLE_AP));
 
-    //------------------COMMENTS PAGE----------------------//
-                      //find title on Comments Page
+        //------------------COMMENTS PAGE----------------------//
+        //find title on Comments Page
         LOGGER.info("Get title on Comments Page");
         String commentsPageTitle = driver.findElement(TITLE_CP).getText();
 
-                      //find comments on Comments Page
+        //find comments on Comments Page
         LOGGER.info("Get comments in Comments Page");
         int commentsPageCommentCount = Integer.parseInt(driver.findElement(COMMENTS_CP).getText());
 
-                      //check
+        //check
         Assertions.assertTrue(homePageTitle.startsWith(commentsPageTitle), "Wrong title!");
         Assertions.assertEquals(homePageCommentsCount, commentsPageCommentCount, "Wrong comment count!");
 
-            }
-    private int parseCommentCount(String textToParse){
-        textToParse = textToParse.substring(1, textToParse.length() -1);
+    }
+
+    private int parseCommentCount(String textToParse) {
+        textToParse = textToParse.substring(1, textToParse.length() - 1);
         return Integer.parseInt(textToParse);
 
-            }
     }
+}
 
 
 
