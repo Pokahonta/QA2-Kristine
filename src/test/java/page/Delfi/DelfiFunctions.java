@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.sql.Driver;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -36,7 +36,7 @@ public class DelfiFunctions {
             url = "http://" + url;
         }
 
-        driver .get(url);
+        driver.get(url);
     }
 
     public List<WebElement> findElements (By locator) {
