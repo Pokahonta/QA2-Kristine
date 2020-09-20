@@ -74,10 +74,10 @@ public class HomeWork {
         driver.manage().window().maximize();
         driver.get("http://delfi.lv");
 
-        List<WebElement> title = driver.findElements(By.xpath(".//h1[contains(@class, 'headline__title')]"));
+        List<WebElement> FIRST_TITLE = driver.findElements(By.xpath(".//h1[contains(@class, 'headline__title')]"));
         List<WebElement> comments = driver.findElements(By.xpath(".//a [contains(@class, 'comment-count')]"));
-            for (int i = 0; i < title.size(); i++) {
-            System.out.println( (i + 1) + ": " + title.get(i).getText() + comments.get(i).getText());
+            for (int i = 0; i < FIRST_TITLE.size(); i++) {
+            System.out.println( (i + 1) + ": " + FIRST_TITLE.get(i).getText() + comments.get(i).getText());
             }
 
         driver.findElement(By.xpath(".//h1[contains(@class, 'headline__title')]")).getText();
