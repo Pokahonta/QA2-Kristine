@@ -10,7 +10,7 @@ public class AP {
 
     private final By TITLE_AP = By.xpath(".//h1[contains(@class, 'd-inline')]");
     private final By COMMENT_COUNT_AP = By.xpath(".//a[contains(@class, 'd-print')]");
-    private final By TIME = By.xpath(".//time[comtains(@class, 'd-block')]");
+    private final By TIME = By.xpath(".//time[contains(@class, 'd-block')]");
 
     private DelfiFunctions df;
 
