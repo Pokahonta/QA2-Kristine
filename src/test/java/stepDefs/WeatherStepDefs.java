@@ -1,13 +1,18 @@
 package stepDefs;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import model.Response;
+import org.junit.jupiter.api.Assertions;
+import requester.WeatherRequester;
 
 
 public class WeatherStepDefs {
     private String city;
     private String country;
+    private Response response;
 
 
     @Given("city is: {string}")
@@ -17,18 +22,23 @@ public class WeatherStepDefs {
 
     @Given("country is: {string}")
     public void set_country(String country) {
-        this.country = country.toLowerCase();//peredelovaem na malenkie bukvi
+        this.country = country.toLowerCase();//peredelivaem na malenkie bukvi
     }
 
     @When("we are requesting weather data")
-    public void request_weather() {
+    public void request_weather() throws JsonProcessingException {
+        WeatherRequester requester = new WeatherRequester();
+        response = requester.requestWeather(city, country);
     }
 
     @Then("lon is: {double}")
     public void check_lon(Double lon){
+        Assertions.assertEquals(lon, response.getCoord().getLon(), "Wrong lon value");
     }
+
     @Then("lat is: {double}")
     public void check_lat(Double lat){
+        Assertions.assertEquals(lat, response.getCoord().getLat(), "Wrong lat value");
     }
 
     @Then("weather id is: {int}")
