@@ -1,18 +1,19 @@
 package model;
 
 public class Weather {
-    private int id;
+    private int weather_id;
     private String main;
     private String description;
     private String icon;
 
-    public int getId() {
-        return id;
+    public int getWeather_id() {
+        return weather_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setWeather_id(int weather_id) {
+        this.weather_id = weather_id;
     }
+
 
     public String getMain() {
         return main;

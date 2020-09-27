@@ -3,13 +3,14 @@ package model;
 
 public class Sys {
     private int type;
-    private int sys_id;
+    private int id;
     private Double message;
-    private String country;
+    private String land;
     private int sunrise;
     private int sunset;
 
     public int getType() {
+
         return type;
     }
 
@@ -17,12 +18,12 @@ public class Sys {
         this.type = type;
     }
 
-    public int getSys_id() {
-        return sys_id;
+    public int getId() {
+        return id;
     }
 
-    public void setSys_id(int id) {
-        this.sys_id = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Double getMessage() {
@@ -33,27 +34,28 @@ public class Sys {
         this.message = message;
     }
 
-    public String getCountry() {
-        return country;
+    public String getLand() {
+        return land;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setLand(String country) {
+        this.land = country;
     }
 
-    public Integer getSunrise() {
+    public int getSunrise() {
         return sunrise;
     }
 
-    public void setSunrise(Integer sunrise) {
+    public void setSunrise(int sunrise) {
         this.sunrise = sunrise;
     }
 
-    public Integer getSunset() {
+    public int getSunset() {
         return sunset;
     }
 
-    public void setSunset(Integer sunset) {
+    public void setSunset(int sunset) {
         this.sunset = sunset;
     }
+
 }

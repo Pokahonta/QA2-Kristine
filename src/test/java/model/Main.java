@@ -4,7 +4,7 @@ public class Main {
 
     private Double temp;
     private int pressure;
-    private int humadity;
+    private int humidity;
     private Double temp_min;
     private Double temp_max;
 
@@ -25,12 +25,12 @@ public class Main {
         this.pressure = pressure;
     }
 
-    public int getHumadity() {
-        return humadity;
+    public int getHumidity() {
+        return humidity;
     }
 
-    public void setHumadity(int humadity) {
-        this.humadity = humadity;
+    public void setHumidity(int humadity) {
+        this.humidity = humadity;
     }
 
     public Double getTemp_min() {

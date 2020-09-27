@@ -1,9 +1,15 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)  //
 public class Response {
     private Coord coord;
+
+    @JsonProperty("weather, wind, cloud") //ukazivaem, chto java"Weathers" budet v json nazivatjsa"weather"
     private List<Weather> weathers;
     private String base;
     private Main main;

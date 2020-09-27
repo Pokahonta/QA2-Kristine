@@ -9,7 +9,7 @@ import page.Delfi.helpers.CommentsHelper;
 import java.util.List;
 
 public class HP {
-    private final By ARTICLE_HP = By.xpath("article");
+    private final By ARTICLE_HP = By.tagName("article");
     private final By TITLE_HP = By.xpath(".//h1[contains(@class, 'headline__title')]");
     private final By COMMENT_COUNTS_HP = By.xpath(".//a [contains(@class, 'comment-count')]");
 
@@ -24,7 +24,7 @@ public class HP {
     }
 
     public String getTitleById(int id) {
-        return getArticleById(id).findElement(TITLE_HP).getText();
+        return getArticleById(id).findElement(TITLE_HP).getText().trim();
     }
 
     public AP openArticle(int id){
