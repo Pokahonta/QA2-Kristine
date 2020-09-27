@@ -11,7 +11,7 @@ Feature: Testing weather API for one city
 
     And weather id is: 300
     And main is: "Drizzle"
-    And description is: "ligth intensity drizzle"
+    And description is: "light intensity drizzle"
     And icon is: "09d"
 
     And base is: "stations"
@@ -30,7 +30,7 @@ Feature: Testing weather API for one city
     And all is: 90
 
     And type is: 1
-    And id is: 5091
+    And sys_id is: 5091
     And message is: 0.0103
     And land is: "GB"
     And sunrise is: 1485762037

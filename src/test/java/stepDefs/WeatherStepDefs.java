@@ -42,20 +42,20 @@ public class WeatherStepDefs {
     }
 
     @Then("weather id is: {int}")
-    public void check_weather_id(int weather_id){
-        Assertions.assertEquals(weather_id, response.getWeathers().getClass(), "Wrong weather_id value");
+    public void weather_id(int id){
+        Assertions.assertEquals(id, response.getWeathers().get(0).getId(), "Wrong weather_id value");
     }
     @Then("main is: {string}")
     public void main(String main){
-        Assertions.assertEquals(main, response.getWeathers().getClass(), "Wrong main value");
+        Assertions.assertEquals(main, response.getWeathers().get(0).getMain(), "Wrong main value");
     }
     @Then("description is: {string}")
     public void description (String description){
-        Assertions.assertEquals(description, response.getWeathers().getClass(), "Wrong description value");
+        Assertions.assertEquals(description, response.getWeathers().get(0).getDescription(), "Wrong description value");
     }
     @Then("icon is: {string}")
     public void check_icon (String icon){
-       Assertions.assertEquals(icon, response.getWeathers(), "Wrong icon value");
+       Assertions.assertEquals(icon, response.getWeathers().get(0).getIcon(),"Wrong icon value");
 
     }
 
@@ -115,7 +115,7 @@ public class WeatherStepDefs {
         Assertions.assertEquals(type, response.getSys().getType(), "Wrong type value");
     }
 
-    @Then("id is: {int}")
+    @Then("sys_id is: {int}")
     public void check_sys_id (int id){
         Assertions.assertEquals(id, response.getSys().getId(), "Wrong Sys id value");
     }
@@ -126,8 +126,8 @@ public class WeatherStepDefs {
     }
 
     @Then("land is: {string}")
-    public void check_land(String land){
-        Assertions.assertEquals(land, response.getSys().getLand(), "Wrong land value");
+    public void check_land(String country){
+        Assertions.assertEquals(country, response.getSys().getCountry(), "Wrong land value");
     }
 
     @Then("sunrise is: {int}")

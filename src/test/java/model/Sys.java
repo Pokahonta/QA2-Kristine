@@ -5,7 +5,7 @@ public class Sys {
     private int type;
     private int id;
     private Double message;
-    private String land;
+    private String country;
     private int sunrise;
     private int sunset;
 
@@ -34,12 +34,12 @@ public class Sys {
         this.message = message;
     }
 
-    public String getLand() {
-        return land;
+    public String getCountry() {
+        return country;
     }
 
-    public void setLand(String country) {
-        this.land = country;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public int getSunrise() {

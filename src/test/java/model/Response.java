@@ -5,15 +5,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)  //
+//@JsonIgnoreProperties(ignoreUnknown = true)  //
 public class Response {
     private Coord coord;
 
-    @JsonProperty("weather, wind, cloud") //ukazivaem, chto java"Weathers" budet v json nazivatjsa"weather"
+    @JsonProperty("weather") //ukazivaem, chto java"Weathers" budet v json nazivatjsa"weather"
     private List<Weather> weathers;
     private String base;
     private Main main;
     private int visibility;
+    @JsonProperty("wind")
     private Wind winds;
     private Cloud clouds;
     private int dt;
